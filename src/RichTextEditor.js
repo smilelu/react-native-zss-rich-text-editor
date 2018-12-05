@@ -304,7 +304,7 @@ export default class RichTextEditor extends Component {
           source={pageSource}
           onLoad={() => this.init()}
         />
-        {this._renderLinkModal()}
+        {/* {this._renderLinkModal()} */}
       </View>
     );
   }
