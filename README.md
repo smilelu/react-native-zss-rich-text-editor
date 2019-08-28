@@ -1,11 +1,11 @@
 # React Native Rich Text Editor
 
-A fully functional Rich Text Editor for both Android and iOS, based off the [ZSSRichTextEditor](https://github.com/nnhubbard/ZSSRichTextEditor/tree/master/ZSSRichTextEditor) project. 
+A fully functional Rich Text Editor for both Android and iOS, based off the [ZSSRichTextEditor](https://github.com/nnhubbard/ZSSRichTextEditor/tree/master/ZSSRichTextEditor) project.
 
 ## Installation
 
 ```
-npm i --save react-native-zss-rich-text-editor
+npm i --save git+https://github.com/smilelu/react-native-zss-rich-text-editor.git
 ```
 
 On Android, add the following to the end of your `android/app/build.gradle`
@@ -40,7 +40,7 @@ The editor component. Simply place this component in your view hierarchy to rece
 
 	Text that will be used as a placeholder when no text is present in the title section.
 * `contentPlaceholder `
-	
+
 	Text that will be used as a placeholder when no text is present in the content section.
 * `customCSS `
 
@@ -83,14 +83,14 @@ The editor component. Simply place this component in your view hierarchy to rece
 
 This method shows a dialog for setting a link title and url, that will be inserted at the current cursor location.
 
-* `showLinkDialog(optionalTitle = '', optionalUrl = '')` 
+* `showLinkDialog(optionalTitle = '', optionalUrl = '')`
 
 To adjust content, placeholders or css, use these methods
 
 *  `setTitlePlaceholder(placeholder) `
 *  `setContentPlaceholder(placeholder)`
 *  `setCustomCSS(css) `
-*  `setTitleHTML(html)` 
+*  `setTitleHTML(html)`
 *  `setContentHTML(html) `
 
 These methods are used when adding content such as images or links that will intefere with the cursor position. `prepareInsert` saves  the current selection, and `restoreSelection` will replace it after the insertion is done. It is called implicitly by `insertImage` and `insertLink` so they should probably never be called directly.
@@ -108,7 +108,7 @@ To get the content or title HTML, use these **asynchronous** methods.
 To focus or blur sections, use these methods
 
 * `focusTitle()`
-* `focusContent()` 
+* `focusContent()`
 *  `blurTitleEditor() `
 *  `blurContentEditor() `
 
@@ -119,7 +119,7 @@ To know when the title or content are in focus, use the following methods.
 
 This method registers a function that will get called whenver the cursor position changes or a change is made to the styling of the editor at the cursor's position., The callback will be called with an array of `actions` that are active at the cusor position, allowing a toolbar to respond to changes.
 
-*  `registerToolbar(listener)` 
+*  `registerToolbar(listener)`
 
 ### Example Usage:
 
@@ -138,11 +138,11 @@ This method registers a function that will get called whenver the cursor positio
 
 This is a Component that provides a toolbar for easily controlling an editor. It is designed to be used together with a `RichTextEditor` component.
 
-The `RichTextToolbar` has one required property: 
+The `RichTextToolbar` has one required property:
 
 * `getEditor()`
 
-Which must provide a **function** that returns a `ref` to a `RichTextEditor` component. 
+Which must provide a **function** that returns a `ref` to a `RichTextEditor` component.
 
 This is because the `ref` is not created until after the first render, before which the toolbar is rendered. This means that any `ref` passed directly will inevitably be passed as `undefined`.
 
@@ -150,19 +150,19 @@ Other props supported by the `RichTextToolbar` component are:
 
 * `actions`
 
-	An `array` of `actions` to be provided by this toolbar. The default actions are: 
+	An `array` of `actions` to be provided by this toolbar. The default actions are:
 	* `actions.insertImage`
   	* `actions.setBold`
   	* `actions.setItalic`
   	* `actions.insertBulletsList`
   	* `actions.insertOrderedList`
   	* `actions.insertLink`
- 
+
 * `onPressAddLink`
 * `onPressAddImage`
 
-	Functions called when the `addLink` or `addImage `actions are tapped. 
-	
+	Functions called when the `addLink` or `addImage `actions are tapped.
+
 * `selectedButtonStyle`
 * `iconTint`
 * `selectedIconTint`
@@ -173,12 +173,12 @@ Other props supported by the `RichTextToolbar` component are:
 * `renderAction`
 
 	Altenatively, you can provide a render function that will be used instead of the default, so you can fully control the tollbar design.
-	
-	
-* `iconMap` 
+
+
+* `iconMap`
 
 	`RichTextToolbar` comes with default icons for the default actions it renders. To override those, or to add icons for non-default actions, provide them in a dictionary to this prop.
-	
+
 
 ### Example Usage:
 
@@ -208,7 +208,7 @@ This is a set of consts of all supported actions. These will be passed in arrays
 	  	blurContentEditor: 'BLUR_CONTENT_EDITOR',
 	  	focusTitle: 'FOCUS_TITLE',
 	  	focusContent: 'FOCUS_CONTENT',
-		
+
 	  	setBold: 'bold',
 	  	setItalic: 'italic',
 	  	setUnderline: 'underline',
